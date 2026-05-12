@@ -1,0 +1,24 @@
+import random
+import yaml
+
+# Load YML file
+with open("config.yml", "r") as file:
+    config = yaml.safe_load(file)
+
+min_num = config["game"]["min_number"]
+max_num = config["game"]["max_number"]
+
+number = random.randint(min_num, max_num)
+
+print(f"Guess a number between {min_num} and {max_num}")
+
+while True:
+    guess = int(input("Enter your guess: "))
+
+    if guess == number:
+        print("Correct! You won!")
+        break
+    elif guess < number:
+        print("Too low!")
+    else:
+        print("Too high!")
