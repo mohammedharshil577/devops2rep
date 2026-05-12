@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Number Guessing Game</title>
+
+    <!-- YML Config -->
+    <script type="text/yaml" id="config">
+game:
+  min: 1
+  max: 10
+  bg_color: "#222"
+  text_color: "#fff"
+    </script>
+
+    <style>
+        body {
+            background-color: #222;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 100px;
+        }
+
+        .container {
+            background: #333;
+            padding: 20px;
+            width: 300px;
+            margin: auto;
+            border-radius: 10px;
+        }
+
+        input, button {
+            padding: 10px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Guess The Number</h1>
+    <p>Guess a number between 1 and 10</p>
+
+    <input type="number" id="guess">
+    <button onclick="checkGuess()">Guess</button>
+
+    <p id="result"></p>
+</div>
+
+<script>
+    let min = 1;
+    let max = 10;
+
+    let number = Math.floor(Math.random() * (max - min + 1)) + min;
+
+    function checkGuess() {
+        let guess = document.getElementById("guess").value;
+        let result = document.getElementById("result");
+
+        if (guess == number) {
+            result.innerHTML = "Correct! You won!";
+        } else if (guess < number) {
+            result.innerHTML = "Too low!";
+        } else {
+            result.innerHTML = "Too high!";
+        }
+    }
+</script>
+
+</body>
+</html>
